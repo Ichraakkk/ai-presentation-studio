@@ -1,32 +1,345 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Presentation Studio</title>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Presentation Studio</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#f4f6ff;font:15px/1.5 system-ui,Arial}.wrap{max-width:1000px;margin:auto;padding:20px}.brand{font-weight:800;letter-spacing:.3px}.logo{display:inline-grid;place-items:center;background:linear-gradient(135deg,#9b8cff,#69e0d0);color:#101426;width:38px;height:38px;border-radius:12px;margin-right:9px}.hero{padding:34px 0 22px}.eyebrow{color:#69e0d0;letter-spacing:2px;font-size:12px;font-weight:800}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.02;margin:12px 0;letter-spacing:-1.4px}.grad{background:linear-gradient(90deg,#fff,#9b8cff,#69e0d0);color:transparent;background-clip:text}.hero p,.sub,.note{color:#aab4d0}.grid{display:grid;gap:16px}@media(min-width:760px){.grid{grid-template-columns:1.05fr .95fr}}.card{background:linear-gradient(180deg,#17213a,#121a2f);border:1px solid #2a3655;border-radius:20px;padding:20px}.card h2{margin:0 0 4px}.sub{font-size:13px;margin:0 0 18px}.drop{display:block;text-align:center;padding:24px 12px;border:1.5px dashed #64709b;border-radius:16px;background:#0e1528;cursor:pointer}.drop strong{display:block;margin:7px}.drop small{color:#aab4d0}input[type=file]{display:none}label.field{display:block;margin:15px 0 7px;font-size:13px}input[type=text],select{width:100%;background:#0b1224;color:#f4f6ff;border:1px solid #2a3655;border-radius:10px;padding:12px;font:inherit}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:11px;padding:13px;font-weight:800;cursor:pointer}.primary{width:100%;margin-top:18px;background:linear-gradient(100deg,#9b8cff,#69e0d0);color:#101426}.btn:disabled{opacity:.4}.status{display:none;white-space:pre-wrap;margin-top:13px;background:#0b1224;border:1px solid #2a3655;border-radius:11px;padding:12px;color:#aab4d0;font-size:13px}.status.error{border-color:#8d425c;color:#ffc3d5}.status.ok{border-color:#286b5e;color:#b9fff0}.fileinfo{display:none;margin-top:10px;color:#b9fff0;background:#102b2b;border-radius:10px;padding:9px;font-size:13px;overflow-wrap:anywhere}.slide{aspect-ratio:16/9;border-radius:14px;padding:20px;background:linear-gradient(130deg,#11182b,#24204b 70%,#164c58);border:1px solid #3b476b;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}.slide:after{content:"";position:absolute;right:-40px;top:-55px;width:170px;height:170px;border-radius:50%;background:#9b8cff22}.slide>*{position:relative}.kicker{font-size:10px;letter-spacing:2px;color:#69e0d0}.slide h3{font-size:clamp(19px,4vw,28px);line-height:1.1;margin:12px 0}.slide p{font-size:clamp(10px,2vw,14px);color:#d2daf0}.tag{display:inline-block;border:1px solid #2a3655;color:#d9e2ff;border-radius:99px;padding:5px 8px;font-size:11px;margin:10px 5px 0 0}.note{font-size:12px}.footer{text-align:center;color:#7f8aa9;font-size:12px;margin:22px}
-</style></head><body><main class="wrap">
-<div class="brand"><span class="logo">✦</span>AI Presentation Studio <span class="tag">MVP 0.1</span></div>
-<section class="hero"><div class="eyebrow">PDF → POWERPOINT STUDIO</div><h1>Votre rapport.<br><span class="grad">Une présentation qui marque.</span></h1><p>Importez un PDF, extrayez son texte et générez un PowerPoint éditable avec une direction artistique moderne.</p></section>
-<div class="grid"><section class="card"><h2>Créer une présentation</h2><p class="sub">Prototype dans le navigateur · aucun compte requis</p>
-<label class="drop" id="drop" for="pdfFile"><div style="font-size:30px">⇧</div><strong>Choisir un rapport PDF</strong><small>Appuyez ici · PDF textuel, 15 MB maximum conseillé</small><input id="pdfFile" type="file" accept="application/pdf,.pdf"></label><div id="fileinfo" class="fileinfo"></div>
-<label class="field" for="deckTitle">Titre de la présentation</label><input id="deckTitle" type="text" placeholder="Ex. Évaluation de la qualité du signal ECG fœtal">
-<div class="row"><div><label class="field" for="slideCount">Nombre de slides</label><select id="slideCount"><option>6</option><option selected>8</option><option>10</option><option>12</option></select></div><div><label class="field" for="lang">Langue</label><select id="lang"><option value="same">Texte extrait</option><option value="fr">Structure française</option><option value="en">Structure anglaise</option></select></div></div>
-<button id="generate" class="btn primary" disabled>✦ Générer le PowerPoint</button><div id="status" class="status"></div><p class="note">Le PDF est lu dans votre navigateur et n'est pas envoyé à un serveur par cette version.</p></section>
-<section class="card"><h2>Aperçu du style</h2><p class="sub">Sombre, scientifique, minimaliste.</p><div class="slide"><div class="kicker">AI PRESENTATION STUDIO</div><h3>From report<br>to impact.</h3><p>Une idée forte par slide.<br>Des résultats lisibles.<br>Un deck modifiable.</p></div><span class="tag">Titres expressifs</span><span class="tag">Contraste élevé</span><span class="tag">PPTX éditable</span><p class="note">Exemple de direction visuelle. Le générateur utilise le texte extrait du PDF.</p></section></div>
-<div class="footer">Prototype indépendant · Vérifiez le fichier final dans PowerPoint.</div></main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1020;color:#f4f6ff;font:15px/1.5 system-ui,Arial,sans-serif}
+.wrap{max-width:1000px;margin:auto;padding:20px}
+.brand{font-weight:800;display:flex;align-items:center;gap:9px}
+.logo{display:inline-grid;place-items:center;background:linear-gradient(135deg,#9b8cff,#69e0d0);color:#101426;width:38px;height:38px;border-radius:12px}
+.tag{display:inline-block;border:1px solid #2a3655;color:#d9e2ff;border-radius:99px;padding:3px 9px;font-size:11px}
+.hero{padding:30px 0 20px}
+.eyebrow{color:#69e0d0;letter-spacing:2px;font-size:12px;font-weight:800}
+.hero h1{font-size:clamp(32px,7vw,54px);line-height:1.05;margin:12px 0}
+.grad{background:linear-gradient(90deg,#fff,#9b8cff,#69e0d0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p,.sub,.note{color:#aab4d0}
+.grid{display:grid;gap:16px}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:linear-gradient(180deg,#17213a,#121a2f);border:1px solid #2a3655;border-radius:20px;padding:20px}
+.card h2{margin:0 0 4px}
+.sub{font-size:13px;margin:0 0 16px}
+.drop{display:block;text-align:center;padding:22px 12px;border:1.5px dashed #64709b;border-radius:16px;background:#0e1528;cursor:pointer}
+.drop strong{display:block;margin:6px}
+.drop small{color:#aab4d0}
+input[type=file]{display:none}
+label.field{display:block;margin:14px 0 6px;font-size:13px}
+input[type=text],select{width:100%;background:#0b1224;color:#f4f6ff;border:1px solid #2a3655;border-radius:10px;padding:12px;font:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{border:0;border-radius:11px;padding:13px;font-weight:800;cursor:pointer;font:inherit;font-weight:800}
+.primary{width:100%;margin-top:16px;background:linear-gradient(100deg,#9b8cff,#69e0d0);color:#101426}
+.second{width:100%;margin-top:10px;background:#1c2744;color:#f4f6ff;border:1px solid #2a3655}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.status{display:none;white-space:pre-wrap;margin-top:12px;background:#0b1224;border:1px solid #2a3655;border-radius:11px;padding:12px;color:#aab4d0;font-size:13px}
+.status.error{border-color:#8d425c;color:#ffc3d5}
+.status.ok{border-color:#286b5e;color:#b9fff0}
+.fileinfo{display:none;margin-top:10px;color:#b9fff0;background:#102b2b;border-radius:10px;padding:9px;font-size:13px;overflow-wrap:anywhere}
+.slide{aspect-ratio:16/9;border-radius:14px;padding:5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;border:1px solid #3b476b}
+.slide .k{font-size:10px;letter-spacing:2px;font-weight:700}
+.slide h3{font-size:clamp(15px,3.6vw,26px);line-height:1.15;margin:8px 0}
+.slide ul{margin:6px 0 0;padding-inline-start:18px}
+.slide li{font-size:clamp(9px,1.9vw,13px);margin:3px 0}
+.slide .bar{position:absolute;top:0;left:0;right:0;height:5px}
+.nav{display:flex;align-items:center;justify-content:space-between;margin-top:10px;color:#aab4d0;font-size:13px}
+.nav button{background:#1c2744;color:#fff;border:1px solid #2a3655;border-radius:9px;padding:8px 14px;cursor:pointer;font:inherit}
+.empty{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;color:#7f8aa9;border:1px dashed #2a3655;border-radius:14px;padding:16px}
+.footer{text-align:center;color:#7f8aa9;font-size:12px;margin:22px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="brand"><span class="logo">✦</span>AI Presentation Studio <span class="tag">v0.2</span></div>
+
+  <section class="hero">
+    <div class="eyebrow" data-i="eyebrow"></div>
+    <h1><span data-i="h1a"></span><br><span class="grad" data-i="h1b"></span></h1>
+    <p data-i="heroP"></p>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2 data-i="create"></h2>
+      <p class="sub" data-i="sub"></p>
+
+      <label class="drop" id="drop" for="pdfFile">
+        <div style="font-size:30px">⇧</div>
+        <strong data-i="choose"></strong>
+        <small data-i="hint"></small>
+        <input id="pdfFile" type="file" accept="application/pdf,.pdf">
+      </label>
+      <div id="fileinfo" class="fileinfo"></div>
+
+      <label class="field" for="deckTitle" data-i="titleLabel"></label>
+      <input id="deckTitle" type="text">
+
+      <div class="row">
+        <div>
+          <label class="field" for="slideCount" data-i="slides"></label>
+          <select id="slideCount"><option>6</option><option selected>8</option><option>10</option><option>12</option></select>
+        </div>
+        <div>
+          <label class="field" for="tpl" data-i="tpl"></label>
+          <select id="tpl">
+            <option value="business" data-i="tBusiness"></option>
+            <option value="university" data-i="tUniversity"></option>
+            <option value="project" data-i="tProject"></option>
+          </select>
+        </div>
+      </div>
+
+      <label class="field" for="lang" data-i="lang"></label>
+      <select id="lang">
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+      </select>
+
+      <button id="preview" class="btn primary" disabled data-i="previewBtn"></button>
+      <button id="download" class="btn second" disabled data-i="downloadBtn"></button>
+      <div id="status" class="status"></div>
+      <p class="note" data-i="privacy"></p>
+    </section>
+
+    <section class="card">
+      <h2 data-i="prevTitle"></h2>
+      <p class="sub" data-i="prevSub"></p>
+      <div id="stage"></div>
+      <div class="nav" id="nav" style="display:none">
+        <button id="prev">‹</button><span id="counter"></span><button id="next">›</button>
+      </div>
+    </section>
+  </div>
+  <div class="footer" data-i="footer"></div>
+</main>
+
 <script>
-(()=>{const input=document.getElementById('pdfFile'),drop=document.getElementById('drop'),info=document.getElementById('fileinfo'),btn=document.getElementById('generate'),status=document.getElementById('status');let file=null;
-if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-function msg(t,c=''){status.style.display='block';status.className='status '+c;status.textContent=t}
-function choose(f){if(!f)return;if(f.type!=='application/pdf'&&!f.name.toLowerCase().endsWith('.pdf'))return msg('Choisissez un fichier PDF.','error');if(f.size>15*1024*1024)return msg('Fichier trop volumineux : essayez un PDF de moins de 15 MB.','error');file=f;info.style.display='block';info.textContent='✓ '+f.name+' · '+(f.size/1048576).toFixed(1)+' MB';btn.disabled=false;let t=document.getElementById('deckTitle');if(!t.value)t.value=f.name.replace(/\.pdf$/i,'').replace(/[_-]/g,' ');msg('PDF prêt. Vous pouvez générer le PowerPoint.')}
-input.addEventListener('change',e=>choose(e.target.files[0]));['dragover','dragenter'].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.style.borderColor='#69e0d0'}));drop.addEventListener('drop',e=>{e.preventDefault();choose(e.dataTransfer.files[0]);drop.style.borderColor='#64709b'});
-function clean(s){return(s||'').replace(/\s+/g,' ').trim()}
-async function extract(f){if(!window.pdfjsLib)throw Error('PDF.js non chargé. Vérifiez la connexion et rechargez la page.');let pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise,p=[];for(let i=1;i<=pdf.numPages;i++){msg('Lecture du PDF… page '+i+' / '+pdf.numPages);let page=await pdf.getPage(i),c=await page.getTextContent();p.push(c.items.map(x=>x.str).filter(Boolean).join(' '))}return{pages:pdf.numPages,text:p.join('\\n\\n')}}
-function chunks(text,n){let paras=text.split(/\\n{2,}|(?<=[.!?])\\s+/).map(clean).filter(x=>x.length>35);if(!paras.length)paras=[clean(text)];let out=[],cur='';for(let p of paras){if(p.length>450)p=p.slice(0,447)+'…';if((cur+' '+p).trim().length>450&&cur){out.push(cur);cur=p}else cur=(cur+' '+p).trim()}if(cur)out.push(cur);if(out.length<n){let w=text.split(/\\s+/),size=Math.max(80,Math.ceil(w.length/n));out=[];for(let i=0;i<w.length;i+=size)out.push(w.slice(i,i+size).join(' '))}return out.slice(0,n)}
-function heading(s,i){let x=s.split(/[.!?:;]/)[0].trim();return x.length>=8&&x.length<=65?x:['Contexte et enjeux','Objectif principal','Approche proposée','Éléments clés','Analyse des résultats','Points à retenir','Conclusion'][i%7]}
-async function create(title,parts,source){if(!window.PptxGenJS)throw Error('La bibliothèque PowerPoint ne s’est pas chargée. Rechargez avec Internet.');let pptx=new pptxgen();pptx.layout='LAYOUT_WIDE';pptx.author='AI Presentation Studio';pptx.subject='Présentation générée depuis un PDF';pptx.title=title;pptx.theme={headFontFace:'Aptos Display',bodyFontFace:'Aptos',lang:'fr-FR'};let W=13.333,H=7.5,C={bg:'101426',panel:'17213A',white:'F4F6FF',muted:'CAD3EC',cyan:'69E0D0',purple:'9B8CFF',line:'394563'};
-function base(s,num,total){s.background={color:C.bg};s.addShape(pptx.ShapeType.rect,{x:0,y:0,w:W,h:.12,line:{color:C.cyan,transparency:100},fill:{color:C.cyan}});s.addShape(pptx.ShapeType.ellipse,{x:10.5,y:-1.1,w:4,h:4,line:{color:C.purple,transparency:100},fill:{color:C.purple,transparency:82}});s.addText('AI PRESENTATION STUDIO',{x:.65,y:.38,w:4,h:.25,fontSize:9,bold:true,charSpacing:2,color:C.cyan,margin:0});s.addText(String(num).padStart(2,'0')+' / '+String(total).padStart(2,'0'),{x:11.3,y:7.05,w:1.35,h:.2,fontSize:9,color:'AAB4D0',align:'right',margin:0})}
-let s=pptx.addSlide();base(s,1,parts.length+1);s.addText('RAPPORT  →  PRÉSENTATION',{x:.78,y:1.65,w:5,h:.35,fontSize:11,bold:true,charSpacing:2,color:C.cyan,margin:0});s.addText(title||'Présentation professionnelle',{x:.75,y:2.25,w:10.8,h:1.6,fontFace:'Aptos Display',fontSize:30,bold:true,color:C.white,fit:'shrink',margin:.02,valign:'mid'});s.addShape(pptx.ShapeType.line,{x:.78,y:4.18,w:2.3,h:0,line:{color:C.purple,width:3}});s.addText('Synthèse structurée du rapport fourni',{x:.78,y:4.5,w:8.5,h:.5,fontSize:16,color:C.muted,margin:0});s.addText('Document source : '+source,{x:.78,y:6.55,w:10,h:.25,fontSize:9,color:'AAB4D0',margin:0});
-parts.forEach((body,i)=>{let sl=pptx.addSlide();base(sl,i+2,parts.length+1);sl.addText('POINT CLÉ  '+String(i+1).padStart(2,'0'),{x:.78,y:1.05,w:4,h:.28,fontSize:10,bold:true,charSpacing:2,color:C.cyan,margin:0});sl.addText(heading(body,i),{x:.76,y:1.5,w:11.2,h:1.05,fontFace:'Aptos Display',fontSize:25,bold:true,color:C.white,fit:'shrink',margin:.02,valign:'mid'});sl.addShape(pptx.ShapeType.line,{x:.78,y:2.72,w:1.3,h:0,line:{color:C.purple,width:2.5}});sl.addShape(pptx.ShapeType.roundRect,{x:.75,y:3.05,w:11.55,h:2.8,rectRadius:.15,line:{color:C.line,width:1},fill:{color:C.panel,transparency:3}});sl.addText(body.length>560?body.slice(0,557)+'…':body,{x:1.08,y:3.38,w:10.85,h:2.15,fontSize:17,color:C.muted,fit:'shrink',valign:'top',margin:.03});sl.addText('À RETENIR',{x:1.08,y:6.12,w:2,h:.22,fontSize:9,bold:true,charSpacing:1.5,color:C.cyan,margin:0})});
-await pptx.writeFile({fileName:'AI-Presentation-Studio.pptx'})}
-btn.addEventListener('click',async()=>{if(!file)return;btn.disabled=true;let old=btn.textContent;btn.textContent='Génération…';try{let r=await extract(file);if(r.text.trim().length<100)throw Error('Très peu de texte détecté. Le PDF est peut-être scanné ; cette version ne fait pas encore OCR.');let n=Number(document.getElementById('slideCount').value),title=clean(document.getElementById('deckTitle').value)||file.name.replace(/\\.pdf$/i,''),p=chunks(r.text,n-1);msg('Texte extrait ('+r.text.length+' caractères, '+r.pages+' pages). Création du PPTX…');await create(title,p,file.name);msg('PowerPoint téléchargé : '+(p.length+1)+' slides.\n\nLimites de cette première version : pas encore de résumé IA, pas d’OCR, les images/tableaux du PDF ne sont pas reconstruits et les animations natives ne sont pas encore ajoutées.','ok')}catch(e){msg(e.message||String(e),'error')}finally{btn.disabled=!file;btn.textContent=old}});
+(() => {
+'use strict';
+
+/* ---------- Textes de l'interface ---------- */
+const T = {
+fr:{eyebrow:'PDF → POWERPOINT',h1a:'Votre rapport.',h1b:'Une présentation qui marque.',heroP:'Importez un PDF, obtenez un résumé automatique et un PowerPoint éditable.',create:'Créer une présentation',sub:'Tout se passe dans votre navigateur · aucun compte requis',choose:'Choisir un rapport PDF',hint:'PDF textuel · 15 MB maximum',titleLabel:'Titre de la présentation',titlePh:'Ex. Rapport annuel 2026',slides:'Nombre de slides',tpl:'Modèle',tBusiness:'Business',tUniversity:'Université',tProject:'Projet',lang:'Langue',previewBtn:'👁 Générer l’aperçu',downloadBtn:'⬇ Télécharger le PPTX',privacy:'Le PDF est lu dans votre navigateur et n’est jamais envoyé à un serveur.',prevTitle:'Aperçu',prevSub:'Vérifiez les slides avant le téléchargement.',empty:'Importez un PDF puis cliquez sur « Générer l’aperçu ».',footer:'Prototype indépendant · Vérifiez le fichier final dans PowerPoint.',errType:'Choisissez un fichier PDF.',errBig:'Fichier trop volumineux (15 MB maximum).',errLib:'Impossible de charger une bibliothèque. Vérifiez votre connexion Internet et rechargez la page.',errFew:'Très peu de texte détecté. Le PDF est peut-être scanné (pas d’OCR dans cette version).',reading:'Lecture du PDF… page ',ready:'PDF prêt. Cliquez sur « Générer l’aperçu ».',previewOk:'Aperçu prêt : ',done:'PowerPoint téléchargé.',source:'Document source : ',keyPoints:'Points clés',kicker:'SYNTHÈSE',generic:'Présentation',slide:'Slide'},
+en:{eyebrow:'PDF → POWERPOINT',h1a:'Your report.',h1b:'A presentation that stands out.',heroP:'Upload a PDF, get an automatic summary and an editable PowerPoint.',create:'Create a presentation',sub:'Everything runs in your browser · no account needed',choose:'Choose a PDF report',hint:'Text-based PDF · 15 MB max',titleLabel:'Presentation title',titlePh:'e.g. Annual report 2026',slides:'Number of slides',tpl:'Template',tBusiness:'Business',tUniversity:'University',tProject:'Project',lang:'Language',previewBtn:'👁 Generate preview',downloadBtn:'⬇ Download PPTX',privacy:'The PDF is read in your browser and never sent to a server.',prevTitle:'Preview',prevSub:'Check the slides before downloading.',empty:'Upload a PDF, then click “Generate preview”.',footer:'Independent prototype · Check the final file in PowerPoint.',errType:'Please choose a PDF file.',errBig:'File too large (15 MB max).',errLib:'Could not load a library. Check your Internet connection and reload.',errFew:'Very little text found. The PDF may be scanned (no OCR in this version).',reading:'Reading PDF… page ',ready:'PDF ready. Click “Generate preview”.',previewOk:'Preview ready: ',done:'PowerPoint downloaded.',source:'Source document: ',keyPoints:'Key takeaways',kicker:'SUMMARY',generic:'Presentation',slide:'Slide'},
+ar:{eyebrow:'PDF ← بوربوينت',h1a:'تقريرك.',h1b:'عرض تقديمي يلفت الانتباه.',heroP:'ارفع ملف PDF واحصل على ملخص تلقائي وعرض PowerPoint قابل للتعديل.',create:'إنشاء عرض تقديمي',sub:'كل شيء يتم داخل المتصفح · بدون حساب',choose:'اختر ملف PDF',hint:'PDF نصي · الحد الأقصى 15 ميغابايت',titleLabel:'عنوان العرض',titlePh:'مثال: التقرير السنوي 2026',slides:'عدد الشرائح',tpl:'القالب',tBusiness:'أعمال',tUniversity:'جامعة',tProject:'مشروع',lang:'اللغة',previewBtn:'👁 إنشاء المعاينة',downloadBtn:'⬇ تحميل PPTX',privacy:'يُقرأ ملف PDF داخل المتصفح ولا يُرسل إلى أي خادم.',prevTitle:'المعاينة',prevSub:'تحقق من الشرائح قبل التحميل.',empty:'ارفع ملف PDF ثم اضغط «إنشاء المعاينة».',footer:'نموذج مستقل · تحقق من الملف النهائي في PowerPoint.',errType:'اختر ملف PDF.',errBig:'الملف كبير جدًا (الحد 15 ميغابايت).',errLib:'تعذّر تحميل مكتبة. تحقق من الإنترنت وأعد تحميل الصفحة.',errFew:'تم اكتشاف نص قليل جدًا. ربما الملف ممسوح ضوئيًا (لا يوجد OCR في هذه النسخة).',reading:'قراءة الملف… الصفحة ',ready:'الملف جاهز. اضغط «إنشاء المعاينة».',previewOk:'المعاينة جاهزة: ',done:'تم تحميل ملف PowerPoint.',source:'المستند المصدر: ',keyPoints:'أهم النقاط',kicker:'ملخص',generic:'عرض تقديمي',slide:'شريحة'}
+};
+
+/* ---------- Modèles (couleurs sans #) ---------- */
+const THEMES = {
+  business:  {bg:'0F172A',panel:'1E293B',title:'F8FAFC',text:'CBD5E1',a1:'F59E0B',a2:'38BDF8',line:'334155'},
+  university:{bg:'F8FAFC',panel:'FFFFFF',title:'1E3A8A',text:'334155',a1:'2563EB',a2:'0EA5E9',line:'CBD5E1'},
+  project:   {bg:'101426',panel:'17213A',title:'F4F6FF',text:'CAD3EC',a1:'69E0D0',a2:'9B8CFF',line:'394563'}
+};
+
+/* ---------- Éléments ---------- */
+const $ = id => document.getElementById(id);
+const input=$('pdfFile'), drop=$('drop'), info=$('fileinfo'), status=$('status');
+const btnPrev=$('preview'), btnDown=$('download'), stage=$('stage'), nav=$('nav'), counter=$('counter');
+let file=null, deck=null, cur=0;
+
+const L = () => T[$('lang').value];
+
+function applyLang(){
+  const l=$('lang').value, t=T[l];
+  document.documentElement.lang=l;
+  document.documentElement.dir=(l==='ar')?'rtl':'ltr';
+  document.querySelectorAll('[data-i]').forEach(e=>{e.textContent=t[e.dataset.i]});
+  $('deckTitle').placeholder=t.titlePh;
+  if(!deck) showEmpty();
+}
+function msg(text,cls=''){status.style.display='block';status.className='status '+cls;status.textContent=text}
+function showEmpty(){stage.innerHTML='<div class="empty">'+L().empty+'</div>';nav.style.display='none'}
+
+/* ---------- Chargement des bibliothèques (avec secours) ---------- */
+function loadScript(urls){
+  return urls.reduce((p,u)=>p.catch(()=>new Promise((res,rej)=>{
+    const s=document.createElement('script');s.src=u;
+    s.onload=()=>res(u);s.onerror=()=>{s.remove();rej(new Error('x'))};
+    document.head.appendChild(s);
+  })),Promise.reject());
+}
+async function ensurePdf(){
+  if(window.pdfjsLib)return;
+  const u=await loadScript([
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
+    'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js',
+    'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js'
+  ]);
+  pdfjsLib.GlobalWorkerOptions.workerSrc=u.replace('pdf.min.js','pdf.worker.min.js');
+}
+async function ensurePptx(){
+  if(window.PptxGenJS)return;
+  await loadScript([
+    'https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/PptxGenJS/3.12.0/pptxgen.bundle.js',
+    'https://unpkg.com/pptxgenjs@3.12.0/dist/pptxgen.bundle.js'
+  ]);
+}
+
+/* ---------- Choix du fichier ---------- */
+function choose(f){
+  if(!f)return;
+  if(f.type!=='application/pdf'&&!f.name.toLowerCase().endsWith('.pdf'))return msg(L().errType,'error');
+  if(f.size>15*1024*1024)return msg(L().errBig,'error');
+  file=f;deck=null;btnDown.disabled=true;showEmpty();
+  info.style.display='block';
+  info.textContent='✓ '+f.name+' · '+(f.size/1048576).toFixed(1)+' MB';
+  btnPrev.disabled=false;
+  const t=$('deckTitle');
+  if(!t.value)t.value=f.name.replace(/\.pdf$/i,'').replace(/[_-]+/g,' ').trim();
+  msg(L().ready);
+}
+input.addEventListener('change',e=>choose(e.target.files[0]));
+['dragover','dragenter'].forEach(x=>drop.addEventListener(x,e=>{e.preventDefault();drop.style.borderColor='#69e0d0'}));
+drop.addEventListener('dragleave',()=>{drop.style.borderColor='#64709b'});
+drop.addEventListener('drop',e=>{e.preventDefault();drop.style.borderColor='#64709b';choose(e.dataTransfer.files[0])});
+
+/* ---------- Extraction du texte ---------- */
+async function extract(f){
+  await ensurePdf();
+  const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;
+  const pages=[];
+  for(let i=1;i<=pdf.numPages;i++){
+    msg(L().reading+i+' / '+pdf.numPages);
+    const page=await pdf.getPage(i), c=await page.getTextContent();
+    pages.push(c.items.map(x=>x.str).filter(Boolean).join(' '));
+  }
+  return{pages:pdf.numPages,text:pages.join(' ')};
+}
+
+/* ---------- Résumé automatique (extractif, gratuit, local) ---------- */
+const STOP=new Set(('le la les un une des du de d l et ou à au aux en dans par pour sur avec sans que qui quoi dont où est sont été être a ont ce cet cette ces se sa son ses leur leurs ne pas plus ainsi donc mais comme il elle ils elles nous vous on the a an of to in and or is are was were be been for on with as by at from that this these those it its not but if we you they their there which also can will has have had من في على إلى عن مع هذا هذه ذلك التي الذي التي كان كانت أن إن ما لا هو هي هم كما أو ثم قد').split(/\s+/));
+const words=s=>(s.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu)||[]).filter(w=>!STOP.has(w));
+const clean=s=>(s||'').replace(/\s+/g,' ').trim();
+function cut(s,n){s=clean(s);if(s.length<=n)return s;const c=s.slice(0,n-1),i=c.lastIndexOf(' ');return(i>n*0.6?c.slice(0,i):c).replace(/[,;:\-–]$/,'')+'…'}
+
+function sentencesOf(text){
+  return text.split(/(?<=[.!?؟…])\s+/).map(clean).filter(s=>{
+    if(s.length<40||s.length>420)return false;
+    const letters=(s.match(/\p{L}/gu)||[]).length;
+    return letters/s.length>0.6;
+  });
+}
+function summarize(text,n,t){
+  let sents=sentencesOf(text);
+  if(sents.length<3)sents=text.split(/\s+/).reduce((a,w,i)=>{if(i%22===0)a.push('');a[a.length-1]+=w+' ';return a},[]).map(clean).filter(s=>s.length>20);
+  const freq={};
+  sents.forEach(s=>words(s).forEach(w=>freq[w]=(freq[w]||0)+1));
+  const score=sents.map((s,i)=>{
+    const w=words(s);if(!w.length)return{s,i,v:0};
+    let v=w.reduce((a,x)=>a+freq[x],0)/Math.sqrt(w.length);
+    if(i<3)v*=1.15;
+    return{s,i,v};
+  });
+  // slide de contenu = n - 2 (titre + points clés)
+  const body=Math.max(1,n-2), slides=[], size=Math.ceil(sents.length/body);
+  for(let g=0;g<body;g++){
+    const grp=score.slice(g*size,(g+1)*size);if(!grp.length)break;
+    const top=[...grp].sort((a,b)=>b.v-a.v).slice(0,4).sort((a,b)=>a.i-b.i);
+    slides.push({title:cut(top[0].s,62).replace(/[.…]+$/,''),bullets:top.slice(1).map(x=>cut(x.s,170)).concat(top.length===1?[]:[]),lead:top.length===1?cut(top[0].s,260):''});
+    if(slides[slides.length-1].bullets.length===0&&grp.length>1){slides[slides.length-1].bullets=[cut(top[0].s,170)];slides[slides.length-1].title=t.slide+' '+(g+1)}
+  }
+  const best=[...score].sort((a,b)=>b.v-a.v).slice(0,4).sort((a,b)=>a.i-b.i).map(x=>cut(x.s,170));
+  slides.push({title:t.keyPoints,bullets:best,lead:''});
+  return slides;
+}
+
+/* ---------- Construction du modèle de deck ---------- */
+async function buildDeck(){
+  const t=L(), n=Number($('slideCount').value);
+  const r=await extract(file);
+  if(r.text.trim().length<100)throw Error(t.errFew);
+  const title=clean($('deckTitle').value)||file.name.replace(/\.pdf$/i,'')||t.generic;
+  const slides=summarize(r.text,n,t);
+  deck={title,source:file.name,slides,lang:$('lang').value,theme:$('tpl').value,pages:r.pages};
+  cur=0;render();
+  btnDown.disabled=false;
+  msg(t.previewOk+(slides.length+1)+' slides · '+r.pages+' pages · '+r.text.length+' caractères.','ok');
+}
+
+/* ---------- Aperçu HTML ---------- */
+function esc(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function render(){
+  if(!deck)return showEmpty();
+  const t=T[deck.lang], th=THEMES[deck.theme], total=deck.slides.length+1;
+  const style='background:#'+th.bg+';color:#'+th.text+';border-color:#'+th.line;
+  let html;
+  if(cur===0){
+    html='<div class="slide" style="'+style+'"><div class="bar" style="background:#'+th.a1+'"></div><div class="k" style="color:#'+th.a1+'">'+esc(t.kicker)+'</div><h3 style="color:#'+th.title+'">'+esc(deck.title)+'</h3><div style="width:60px;height:3px;background:#'+th.a2+';margin:6px 0"></div><div style="font-size:11px">'+esc(t.source+deck.source)+'</div></div>';
+  }else{
+    const s=deck.slides[cur-1];
+    html='<div class="slide" style="'+style+'"><div class="bar" style="background:#'+th.a1+'"></div><div class="k" style="color:#'+th.a1+'">'+String(cur).padStart(2,'0')+' · '+esc(t.kicker)+'</div><h3 style="color:#'+th.title+'">'+esc(s.title)+'</h3><ul>'+s.bullets.map(b=>'<li>'+esc(b)+'</li>').join('')+'</ul></div>';
+  }
+  stage.innerHTML=html;
+  nav.style.display='flex';
+  counter.textContent=(cur+1)+' / '+total;
+}
+$('prev').onclick=()=>{if(deck&&cur>0){cur--;render()}};
+$('next').onclick=()=>{if(deck&&cur<deck.slides.length){cur++;render()}};
+
+/* ---------- Export PPTX ---------- */
+async function exportPptx(){
+  await ensurePptx();
+  const t=T[deck.lang], th=THEMES[deck.theme], rtl=deck.lang==='ar';
+  const pptx=new PptxGenJS();
+  pptx.layout='LAYOUT_WIDE';
+  pptx.author='AI Presentation Studio';
+  pptx.title=deck.title;
+  const W=13.333, total=deck.slides.length+1, font='Calibri';
+  const align=rtl?'right':'left';
+
+  const base=(s,num)=>{
+    s.background={color:th.bg};
+    s.addShape(pptx.ShapeType.rect,{x:0,y:0,w:W,h:0.12,fill:{color:th.a1},line:{color:th.a1,transparency:100}});
+    s.addText('AI PRESENTATION STUDIO',{x:0.65,y:0.35,w:5,h:0.25,fontSize:9,bold:true,charSpacing:2,color:th.a1,fontFace:font,margin:0});
+    s.addText(String(num).padStart(2,'0')+' / '+String(total).padStart(2,'0'),{x:11.3,y:7.0,w:1.4,h:0.25,fontSize:9,color:th.text,align:'right',fontFace:font,margin:0});
+  };
+
+  // Slide titre
+  let s=pptx.addSlide(); base(s,1);
+  s.addText(t.kicker,{x:0.78,y:1.7,w:6,h:0.35,fontSize:12,bold:true,charSpacing:3,color:th.a1,fontFace:font,margin:0,align,rtlMode:rtl});
+  s.addText(deck.title,{x:0.75,y:2.25,w:11.8,h:1.8,fontSize:36,bold:true,color:th.title,fontFace:font,fit:'shrink',valign:'middle',margin:0,align,rtlMode:rtl});
+  s.addShape(pptx.ShapeType.rect,{x:rtl?10.25:0.78,y:4.25,w:2.3,h:0.06,fill:{color:th.a2},line:{color:th.a2,transparency:100}});
+  s.addText(t.source+deck.source,{x:0.78,y:6.5,w:11.5,h:0.3,fontSize:10,color:th.text,fontFace:font,margin:0,align,rtlMode:rtl});
+
+  // Slides de contenu
+  deck.slides.forEach((sl,i)=>{
+    const p=pptx.addSlide(); base(p,i+2);
+    p.addText(String(i+1).padStart(2,'0')+' · '+t.kicker,{x:0.78,y:1.0,w:6,h:0.3,fontSize:10,bold:true,charSpacing:2,color:th.a1,fontFace:font,margin:0,align,rtlMode:rtl});
+    p.addText(sl.title,{x:0.76,y:1.4,w:11.8,h:1.2,fontSize:28,bold:true,color:th.title,fontFace:font,fit:'shrink',valign:'middle',margin:0,align,rtlMode:rtl});
+    p.addShape(pptx.ShapeType.rect,{x:rtl?11.25:0.78,y:2.7,w:1.3,h:0.05,fill:{color:th.a2},line:{color:th.a2,transparency:100}});
+    p.addShape(pptx.ShapeType.roundRect,{x:0.75,y:3.0,w:11.8,h:3.7,rectRadius:0.12,fill:{color:th.panel},line:{color:th.line,width:1}});
+    const runs=sl.bullets.map(b=>({text:b,options:{bullet:{indent:18},breakLine:true,paraSpaceAfter:10}}));
+    p.addText(runs,{x:1.1,y:3.2,w:11.1,h:3.3,fontSize:17,color:th.text,fontFace:font,fit:'shrink',valign:'top',margin:0,align,rtlMode:rtl});
+  });
+
+  const safe=deck.title.replace(/[^\p{L}\p{N}]+/gu,'-').replace(/^-|-$/g,'').slice(0,50)||'presentation';
+  await pptx.writeFile({fileName:safe+'.pptx'});
+}
+
+/* ---------- Boutons ---------- */
+btnPrev.addEventListener('click',async()=>{
+  if(!file)return;
+  btnPrev.disabled=true;
+  try{await buildDeck()}catch(e){msg(e&&e.message?e.message:String(e),'error')}
+  finally{btnPrev.disabled=!file}
+});
+btnDown.addEventListener('click',async()=>{
+  if(!deck)return;
+  btnDown.disabled=true;
+  try{await exportPptx();msg(L().done,'ok')}
+  catch(e){msg(L().errLib+'\n\n'+(e&&e.message?e.message:String(e)),'error')}
+  finally{btnDown.disabled=false}
+});
+$('lang').addEventListener('change',()=>{applyLang();if(deck){deck.lang=$('lang').value;render()}});
+$('tpl').addEventListener('change',()=>{if(deck){deck.theme=$('tpl').value;render()}});
+
+/* ---------- Démarrage ---------- */
+applyLang();
+ensurePdf().catch(()=>{});
+ensurePptx().catch(()=>{});
 })();
-</script></body></html>
+</script>
+</body>
+</html>
